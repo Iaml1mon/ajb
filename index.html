@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>AJ Burger — Burgers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page-shell">
+  <header class="site-header">
+    <div class="inner nav">
+      <a class="logo-link" href="index.html" aria-label="AJ Burger home">
+        <img src="aj-logo-original.png" alt="AJ Burger">
+      </a>
+      <nav class="desktop-links" aria-label="Main navigation">
+        <a class="active" href="#burgers">Burgers</a>
+        <a href="#story">Our Story</a>
+        <a href="#quality">Quality</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="order-btn" href="#burgers">Order Now <span>♙</span></a>
+      <button class="mobile-menu-btn" id="mobileMenu" type="button" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="burgers">
+      <div class="kicker">Made <b>Fresh</b>. Smashed to <b>Perfection</b>.</div>
+      <h1>Burgers</h1>
+      <div class="brush-line"></div>
+    </section>
+
+    <section class="inner toolbar-wrap">
+      <div class="toolbar">
+        <label class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input id="search" class="search" type="search" placeholder="Search burgers..." aria-label="Search burgers">
+        </label>
+        <select id="sort" class="sort" aria-label="Sort burgers">
+          <option value="featured">Sort by: Featured</option>
+          <option value="price-low">Price: Low to high</option>
+          <option value="price-high">Price: High to low</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="inner content">
+      <div id="count" class="count"></div>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <section class="brand-strip" id="quality">
+      <span class="flame">♨</span>
+      Fresh ingredients. <b>Bold flavours.</b> True satisfaction.
+    </section>
+  </main>
+
+  <div class="mobile-order">
+    <a href="#burgers">Order Now <span>♙</span></a>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
