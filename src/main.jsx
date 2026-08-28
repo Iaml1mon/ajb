@@ -26,6 +26,8 @@ const orderLinks = [
   ["DoorDash","https://www.doordash.com/store/aj-burgers-liverpool-sefton-29595025/37105560/"]
 ];
 
+const asset = (name) => `./${name}`;
+
 function routeFromHash(){
   const raw = location.hash.replace(/^#\/?/,"");
   if(!raw) return {page:"home"};
@@ -65,7 +67,7 @@ function Header({route,menuOpen,setMenuOpen,onOrder}){
   const active = route.page === "home" || route.page === "burger" ? "#/" : `#/${route.page}`;
   return <>
     <header className="header">
-      <a className="brand" href="#/" aria-label="AJ Burger home"><img src="/logo.png" alt="AJ Burger" /></a>
+      <a className="brand" href="#/" aria-label="AJ Burger home"><img src={asset("logo.png")} alt="AJ Burger" /></a>
       <nav className="desktop-nav">{nav.map(([label,href])=><a key={href} className={active===href?"active":""} href={href}>{label}</a>)}</nav>
       <button className="order-button header-order" onClick={onOrder}>Order now <ShoppingBag size={16}/></button>
       <button className="menu-toggle" onClick={()=>setMenuOpen(v=>!v)} aria-label="Menu">{menuOpen?<X/>:<Menu/>}</button>
@@ -98,7 +100,7 @@ function Home(){
       <div className="mobile-meta"><span>Our menu</span><span>{visible.length} stacks</span></div>
       <div className="burger-grid">
         {visible.map((b,i)=><a href={`#/burger/${b.id}`} className="burger-card" key={b.id} style={{animationDelay:`${i*45}ms`}}>
-          <div className="image-wrap"><img src="/burger.png" alt={b.name}/><span className="badge">{b.badge}</span></div>
+          <div className="image-wrap"><img src={asset("burger.png")} alt={b.name}/><span className="badge">{b.badge}</span></div>
           <div className="card-body"><div className="title-row"><h2>{b.name}</h2><span>${b.price}</span></div><p>{b.desc}</p><span className="details">View details <ArrowUpRight size={14}/></span></div>
         </a>)}
       </div>
@@ -112,7 +114,7 @@ function BurgerDetail({id}){
   return <section className="detail-page">
     <a className="back" href="#/"><ArrowLeft size={17}/> Back to burgers</a>
     <div className="detail-grid">
-      <div><div className="detail-photo"><img src="/burger.png" alt={b.name}/></div><div className="thumbs">{[1,2,3,4].map(n=><button key={n}><img src="/burger.png" alt=""/></button>)}</div></div>
+      <div><div className="detail-photo"><img src={asset("burger.png")} alt={b.name}/></div><div className="thumbs">{[1,2,3,4].map(n=><button key={n}><img src={asset("burger.png")} alt=""/></button>)}</div></div>
       <article className="detail-copy"><p className="kicker">{b.badge}</p><h1>{b.name}</h1><div className="detail-price">${b.price}</div><p className="detail-desc">{b.desc}</p><div className="ingredients"><h3>What’s inside</h3>{b.ingredients.map(x=><div key={x}><span>✦</span>{x}</div>)}</div><a className="order-button detail-button" href="#/">Choose another burger</a></article>
     </div>
   </section>;
